@@ -7,7 +7,15 @@ import subscriptionRoutes from "./routes/subscriptions";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.get("/", (_req, res) => {
@@ -17,6 +25,7 @@ app.get("/", (_req, res) => {
 app.use(authRoutes);
 app.use(subscriptionRoutes);
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
