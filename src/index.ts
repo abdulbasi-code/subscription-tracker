@@ -19,7 +19,20 @@ app.use(
 app.use(express.json());
 
 app.get("/", (_req, res) => {
-  res.send("Subscription Tracker API");
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Subscription Tracker API</title>
+      </head>
+      <body>
+        <h1>Subscription Tracker API</h1>
+        <p>This is the backend server. Nothing to see here.</p>
+      </body>
+    </html>
+  `);
 });
 
 app.use(authRoutes);
